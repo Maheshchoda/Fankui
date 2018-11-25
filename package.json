@@ -1,0 +1,24 @@
+{
+  "name": "feedback",
+  "version": "1.0.0",
+  "description": "Taking feedback from the customers by sending an email to them.To know the experience of how our app feels like.",
+  "main": "index.js",
+  "engines": {
+    "node": "10.11.0",
+    "npm": "6.4.1"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "prod": " node app.js"
+  },
+  "keywords": [
+    "feedback",
+    "review"
+  ],
+  "author": "MaheshCHODA",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
