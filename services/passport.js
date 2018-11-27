@@ -27,35 +27,23 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       //accessToken to access the data of user from google
       //It's going to expire after some time, we use refreshToken (to get accessToken again)
       //refreshToken to refresh the accessToken
       const { id, displayName: name } = profile;
-      User.findOne({ googleId: id })
-        .then(oldUser => {
-          //while authentication procedure we are checking
-          //whether the user is existing or not so with done(callback)
-          //it going to resume the authentication flow
-          if (oldUser) {
-            //return null if newUser
-            done(null, oldUser);
-            //null if some error occurs
-            //oldUser if user found
-          } else {
-            new User({
-              googleId: id
-            })
-              .save()
-              .then(user => done(null, user))
-              .catch(err => {
-                console.log(`Can't create the new User: ${err}`);
-              });
-          }
-        })
-        .catch(err => {
-          console.log(`Some Error occured: ${err}`);
-        });
+      const oldUser = await User.findOne({ googleId: id });
+      //while authentication procedure we are checking
+      //whether the user is existing or not so with done(callback)
+      //it going to resume the authentication flow
+      if (oldUser) {
+        //return null if newUser
+        return done(null, oldUser);
+        //null if some error occurs
+        //oldUser if user found
+      }
+      const user = await new User({ googleId: id }).save();
+      done(null, user);
     }
   )
 );

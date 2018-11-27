@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
+const cors = require("cors");
 const keys = require("./config/keys");
 
 mongoose
@@ -20,6 +21,8 @@ require("./models/User");
 require("./services/passport");
 
 const app = express();
+
+app.use(cors());
 
 app.use(
   cookieSession({
