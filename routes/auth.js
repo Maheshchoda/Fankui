@@ -2,7 +2,7 @@ const passport = require("passport");
 
 module.exports = app => {
   app.get("/api/home", (req, res) => {
-    res.send("Welcome back to the Express");
+    res.send(`It's working`);
   });
   app.get("/api/user", (req, res) => {
     console.log(`You accesed the user`);
@@ -14,10 +14,16 @@ module.exports = app => {
       scope: ["profile", "email"] //asking the google for profile and email
     })
   );
-  app.get("/auth/google/callback", passport.authenticate("google")); //extracting the data from callback
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/surveys");
+    }
+  ); //extracting the data from callback
 
-  app.get("/logout", (req, res) => {
+  app.get("/api/logout", (req, res) => {
     req.logout();
-    res.send(`You are logeed out`);
+    res.redirect("/");
   });
 };

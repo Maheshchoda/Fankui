@@ -2,9 +2,9 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:2018/",
   "dependencies": {
     "axios": "^0.18.0",
+    "http-proxy-middleware": "^0.19.1",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
