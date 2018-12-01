@@ -41,6 +41,19 @@ app.use(passport.session()); //acts as a middleware to alter the req object and 
 require("./routes/auth")(app);
 require("./routes/billing")(app);
 
+if (process.env.NODE_ENV === "production") {
+  //Express will server production assets
+  //linking main.js and main.css
+  app.use(express.static("client/build"));
+
+  //Express will server index.html
+  //If it doesn't recognize the path
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
 const PORT = process.env.PORT || 2018;
 app.listen(PORT, err => {
   if (err) console.log(`There is some problem with server`);
