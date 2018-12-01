@@ -2,7 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
-const cors = require("cors");
+const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 
 mongoose
@@ -22,8 +22,8 @@ require("./services/passport");
 
 const app = express();
 
-app.use(cors());
-
+//middleware
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
@@ -39,6 +39,7 @@ app.use(passport.session()); //acts as a middleware to alter the req object and 
 // passport.session() is equivalent to app.use(passport.authenticate('session'));
 
 require("./routes/auth")(app);
+require("./routes/billing")(app);
 
 const PORT = process.env.PORT || 2018;
 app.listen(PORT, err => {

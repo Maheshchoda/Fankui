@@ -1,11 +1,10 @@
 const passport = require("passport");
 
 module.exports = app => {
-  app.get("/api/home", (req, res) => {
-    res.send(`It's working`);
+  app.get("/", (req, res) => {
+    res.send(`Welcome to the Home`);
   });
   app.get("/api/user", (req, res) => {
-    console.log(`You accesed the user`);
     res.send(req.user);
   });
   app.get(

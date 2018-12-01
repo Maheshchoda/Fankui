@@ -3,10 +3,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import Navbar from "./navbar";
-
-const Header = () => <h2>Header</h2>;
-const container = () => <h2>container</h2>;
+import Navbar from "./Navbar";
+import Home from "./Home";
+import Surveys from "./Survery";
 
 class App extends Component {
   componentDidMount() {
@@ -18,8 +17,8 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Navbar />
-            <Route path="/" exact component={Header} />
-            <Route path="/conta" component={container} />
+            <Route path="/" exact component={Home} />
+            <Route path="/surveys" exact component={Surveys} />
           </div>
         </BrowserRouter>
       </div>
