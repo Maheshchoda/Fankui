@@ -18,6 +18,7 @@ mongoose
   });
 
 require("./models/User");
+require("./models/Survey");
 require("./services/passport");
 
 const app = express();
@@ -40,6 +41,7 @@ app.use(passport.session()); //acts as a middleware to alter the req object and 
 
 require("./routes/auth")(app);
 require("./routes/billing")(app);
+require("./routes/surveys")(app);
 
 if (process.env.NODE_ENV === "production") {
   //Express will server production assets
