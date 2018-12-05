@@ -3,7 +3,7 @@ module.exports = {
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   mongoURI: process.env.MONGO_URI,
-  PublishableKey: process.env.Publishable_Key,
-  SecretKey: process.env.Secret_Key,
-  sendGridKey: process.env.sendGridKey
+  PublishableKey: process.env.PUBLISHABLE_KEY,
+  SecretKey: process.env.SECRET_KEY,
+  sendGridKey: process.env.SEND_GRID_KEY
 };
