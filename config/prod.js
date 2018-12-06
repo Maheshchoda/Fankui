@@ -15,5 +15,8 @@ module.exports = {
   },
   sendGrid: {
     sendGridKey: process.env.SEND_GRID_KEY
+  },
+  redirectDomain: {
+    domain: process.env.REDIRECT_DOMAIN
   }
 };
