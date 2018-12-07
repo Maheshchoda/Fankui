@@ -5,29 +5,11 @@ import { NavLink } from "react-router-dom";
 import _ from "lodash";
 import SurveyField from "./surveyField";
 import validateEmails from "../../utils/valitdateEmails";
-
-const Fields = [
-  {
-    label: "Survey Title",
-    name: "title"
-  },
-  {
-    label: "Subject Line",
-    name: "subject"
-  },
-  {
-    label: "Email Body",
-    name: "body"
-  },
-  {
-    label: "Recipient List",
-    name: "emails"
-  }
-];
+import formFields from "./formFields";
 
 class SurveyForm extends Component {
   renderFields() {
-    return _.map(Fields, ({ label, name }) => {
+    return _.map(formFields, ({ label, name }) => {
       return (
         <div key={name}>
           <Field
@@ -43,7 +25,7 @@ class SurveyForm extends Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+        <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
           {this.renderFields()}
           <NavLink
             className="btn waves-effect red left waves-light"
@@ -67,8 +49,8 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || " ");
-  _.each(Fields, ({ name }) => {
+  errors.recipients = validateEmails(values.recipients || " ");
+  _.each(formFields, ({ name }) => {
     if (!values[name]) {
       errors[name] = `you must provide the ${name}`;
     }
@@ -79,5 +61,6 @@ function validate(values) {
 
 export default reduxForm({
   validate,
-  form: "surveyForm"
+  form: "surveyForm",
+  destroyOnUnmount: false
 })(SurveyForm);

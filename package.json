@@ -9,10 +9,11 @@
   },
   "scripts": {
     "start": "node app.js",
-    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "dev": "concurrently  \"npm run client\" \"npm run server\" \"npm run webhook\"",
     "client": "npm start --prefix client",
     "server": "nodemon app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "webhook": "./sendgrid_webhook.sh"
   },
   "keywords": [
     "feedback",
@@ -25,9 +26,12 @@
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "localtunnel": "^1.9.1",
+    "lodash": "^4.17.11",
     "mongoose": "^5.3.13",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
+    "path-parser": "^4.2.0",
     "sendgrid": "^5.2.3",
     "stripe": "^6.17.0"
   }
