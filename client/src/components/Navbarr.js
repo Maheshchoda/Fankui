@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import Payments from "./Payments";
 
-class Header extends Component {
+class Navbarr extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
@@ -52,4 +52,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Navbarr);

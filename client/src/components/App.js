@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import "./App.css";
 
-import Header from "./Header";
+import Navbarr from "./Navbarr";
 import Home from "./Home";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
@@ -18,7 +18,7 @@ class App extends Component {
       <div className="container">
         <BrowserRouter>
           <div>
-            <Header />
+            <Navbarr />
             <Route path="/" exact component={Home} />
             <Route path="/surveys" exact component={Dashboard} />
             <Route path="/surveys/new" exact component={SurveyNew} />
