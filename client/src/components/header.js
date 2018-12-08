@@ -41,7 +41,6 @@ class Header extends Component {
           </NavLink>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             {this.renderContent()}
-            {console.log(this.props)}
           </ul>
         </div>
       </nav>

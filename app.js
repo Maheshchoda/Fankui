@@ -7,7 +7,7 @@ const keys = require("./config/keys");
 
 mongoose
   .connect(
-    keys.db.mongoURI,
+    keys.mongoURI,
     { useNewUrlParser: true }
   )
   .then(() => {
@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000, //30 days
-    keys: [keys.cookie.cookieKey]
+    keys: [keys.cookieKey]
   })
 );
 
